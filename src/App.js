@@ -1,7 +1,9 @@
+import { useRef } from 'react';
 import { CssBaseline } from '@mui/material';
 import { makeStyles } from 'tss-react/mui';
 import { Outlet } from 'react-router-dom';
 import Navbar from './components/Navbar';
+import useAlan from './components/Alan';
 
 const useStyles = makeStyles()((theme) => {
   return {
@@ -12,6 +14,7 @@ const useStyles = makeStyles()((theme) => {
     content: {
       flexGrow: 1,
       padding: '2em',
+      width: '100%',
     },
     toolbar: {
       height: '70px',
@@ -21,6 +24,9 @@ const useStyles = makeStyles()((theme) => {
 
 function App() {
   const { classes } = useStyles();
+  const alanBtnContainer = useRef();
+
+  useAlan();
 
   return (
     <div className={classes.root}>
@@ -30,6 +36,7 @@ function App() {
         <div className={classes.toolbar} />
         <Outlet />
       </main>
+      <div ref={alanBtnContainer} />
       <footer></footer>
     </div>
   );

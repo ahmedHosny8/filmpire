@@ -1,7 +1,23 @@
+* {
+  text-decoration: none;
+}
+
 #error-page {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   width: 100%;
+}
+
+::-webkit-scrollbar {
+  width: 7px;
+}
+
+::-webkit-scrollbar-track {
+  background: #cfcfcf;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #a5a5a5;
 }

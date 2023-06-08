@@ -2,13 +2,15 @@ import './index.css';
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import { Provider } from 'react-redux';
+import { store } from './app/store';
 import App from './App';
 import ErrorPage from './ErrorPage';
 import HomePage from './pages/HomePage';
 import ActorsPage from './pages/ActorsPage';
 import MovieInfoPage from './pages/MovieInfoPage';
-import MoviesPage from './pages/MoviesPage';
 import ProfilePage from './pages/ProfilePage';
+import ToggleColorMode from './utils/ToggleColorMode';
 
 const router = createBrowserRouter([
   {
@@ -21,8 +23,8 @@ const router = createBrowserRouter([
         element: <HomePage />,
       },
       {
-        path: '/movies',
-        element: <MoviesPage />,
+        path: '/approved',
+        element: <HomePage />,
       },
       {
         path: '/movie/:id',
@@ -43,4 +45,10 @@ const router = createBrowserRouter([
 const el = document.getElementById('root');
 const root = ReactDOM.createRoot(el);
 
-root.render(<RouterProvider router={router} />);
+root.render(
+  <Provider store={store}>
+    <ToggleColorMode>
+      <RouterProvider router={router} />
+    </ToggleColorMode>
+  </Provider>
+);
